@@ -60,7 +60,7 @@ const FooterContent = () => {
           }}
         >
           <Typography target="_blank" component={LinkStyled} href="">
-            aerBag-admin
+            aerBag
           </Typography>
         </Box>
       )}
