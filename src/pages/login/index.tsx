@@ -133,18 +133,21 @@ const LoginPage = () => {
       });
     });
   };
-  const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
+  const imageSource =
+    skin === "bordered"
+      ? "auth-v2-login-illustration-bordered"
+      : "auth-v2-login-illustration";
 
   const LogoImage = styled("img")(({ theme }) => ({
     zIndex: 2,
-    maxHeight: 50,
+    maxHeight: 80,
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     [theme.breakpoints.down(1540)]: {
-      maxHeight: 50,
+      maxHeight: 80,
     },
     [theme.breakpoints.down("lg")]: {
-      maxHeight: 50,
+      maxHeight: 80,
     },
   }));
   return (
@@ -181,6 +184,14 @@ const LoginPage = () => {
         >
           <Box sx={{ width: "100%", maxWidth: 400 }}>
             <LogoImage alt="logo" src={`/images/pages/logo2.png`} />
+            <Box sx={{ my: 6 }}>
+              <Typography variant="h3" sx={{ mb: 1.5 }}>
+                {`Welcome to ${themeConfig.templateName}! 👋🏻`}
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                Please sign-in to your account and start the adventure
+              </Typography>
+            </Box>
             <form
               noValidate
               autoComplete="off"
