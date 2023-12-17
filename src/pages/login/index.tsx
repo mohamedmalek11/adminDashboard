@@ -5,19 +5,14 @@ import { useState, ReactNode } from "react";
 import Link from "next/link";
 
 // ** MUI Components
-import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Box, { BoxProps } from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled, useTheme } from "@mui/material/styles";
 import InputAdornment from "@mui/material/InputAdornment";
-import MuiFormControlLabel, {
-  FormControlLabelProps,
-} from "@mui/material/FormControlLabel";
+
 
 // ** Custom Component Import
 import CustomTextField from "src/@core/components/mui/text-field";
@@ -29,10 +24,10 @@ import Icon from "src/@core/components/icon";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation, useQueryClient } from "react-query";
 
 // ** Hooks
 import { useAuth } from "src/hooks/useAuth";
-import useBgColor from "src/@core/hooks/useBgColor";
 import { useSettings } from "src/@core/hooks/useSettings";
 
 // ** Configs
@@ -43,6 +38,7 @@ import BlankLayout from "src/@core/layouts/BlankLayout";
 
 // ** Demo Imports
 import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
+import loginRequest from "src/api/auth";
 
 // ** Styled Components
 const LoginIllustration = styled("img")(({ theme }) => ({
@@ -76,37 +72,28 @@ const LinkStyled = styled(Link)(({ theme }) => ({
   color: `${theme.palette.primary.main} !important`,
 }));
 
-const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(
-  ({ theme }) => ({
-    "& .MuiFormControlLabel-label": {
-      color: theme.palette.text.secondary,
-    },
-  })
-);
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
+  emailAddress: yup.string().email().required(),
   password: yup.string().min(5).required(),
 });
 
 const defaultValues = {
-  password: "admin",
-  email: "admin@aerbag.com",
+  emailAddress: "m.malek@aerbag.app",
+  password: "123456Malek",
 };
 
 interface FormData {
-  email: string;
+  emailAddress: string;
   password: string;
 }
 
 const LoginPage = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // ** Hooks
-  const auth = useAuth();
   const theme = useTheme();
-  const bgColors = useBgColor();
+  const auth = useAuth()
   const { settings } = useSettings();
   const hidden = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -125,9 +112,9 @@ const LoginPage = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    const { email, password } = data;
-    auth.login({ email, password, rememberMe }, () => {
-      setError("email", {
+    const { emailAddress, password } = data;
+    auth.login({ emailAddress, password }, () => {
+      setError("emailAddress", {
         type: "manual",
         message: "Email or Password is invalid",
       });
@@ -199,7 +186,7 @@ const LoginPage = () => {
             >
               <Box sx={{ mb: 4 }}>
                 <Controller
-                  name="email"
+                  name="emailAddress"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange, onBlur } }) => (
@@ -211,9 +198,9 @@ const LoginPage = () => {
                       onBlur={onBlur}
                       onChange={onChange}
                       placeholder="admin@aerbag.com"
-                      error={Boolean(errors.email)}
-                      {...(errors.email && {
-                        helperText: errors.email.message,
+                      error={Boolean(errors.emailAddress)}
+                      {...(errors.emailAddress && {
+                        helperText: errors.emailAddress.message,
                       })}
                     />
                   )}
@@ -268,15 +255,6 @@ const LoginPage = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <FormControlLabel
-                  label="Remember Me"
-                  control={
-                    <Checkbox
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                    />
-                  }
-                />
                 <Typography component={LinkStyled} href="/forgot-password">
                   Forgot Password?
                 </Typography>
@@ -297,12 +275,6 @@ const LoginPage = () => {
                   justifyContent: "center",
                 }}
               >
-                <Typography sx={{ color: "text.secondary", mr: 2 }}>
-                  New on our platform?
-                </Typography>
-                <Typography href="/register" component={LinkStyled}>
-                  Create an account
-                </Typography>
               </Box>
             </form>
           </Box>
