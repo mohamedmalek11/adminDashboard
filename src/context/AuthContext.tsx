@@ -48,36 +48,12 @@ const AuthProvider = ({ children }: Props) => {
       const storedToken = window.localStorage.getItem(
         authConfig.storageTokenKeyName
       )!;
-      setLoading(false);
-      // if (storedToken) {
-      //   setLoading(true);
-      //   await axios
-      //     .get(authConfig.meEndpoint, {
-      //       headers: {
-      //         Authorization: storedToken,
-      //       },
-      //     })
-      //     .then(async (response) => {
-      //       setLoading(false);
-      //       setUser({ ...response.data.userData });
-      //     })
-      //     .catch(() => {
-      //       localStorage.removeItem("userData");
-      //       localStorage.removeItem("refreshToken");
-      //       localStorage.removeItem("accessToken");
-      //       setUser(null);
-      //       setLoading(false);
-      //       if (
-      //         authConfig.onTokenExpiration === "logout" &&
-      //         !router.pathname.includes("login")
-      //       ) {
-      //         router.replace("/login");
-      //       }
-      //     });
-      // } else {
-
-      //   setLoading(false);
-      // }
+      const userDataString = window.localStorage.getItem("userData")!;
+      const userData: UserDataType | null = JSON.parse(userDataString);
+      if (storedToken) {
+        setUser(userData);
+        setLoading(false);
+      }
     };
 
     initAuth();
@@ -96,16 +72,17 @@ const AuthProvider = ({ children }: Props) => {
           authConfig.storageTokenKeyName,
           response.data.accessToken
         );
-        const returnUrl = router.query.returnUrl;
-        setLoading(false);
         setUser(response.data.user);
         window.localStorage.setItem(
           "userData",
           JSON.stringify(response.data.user)
         );
+        return router.query.returnUrl;
+      })
+      .then((returnUrl) => {
         const redirectURL = returnUrl && returnUrl !== "/" ? returnUrl : "/";
-
         router.replace(redirectURL as string);
+        setLoading(false);
       })
 
       .catch((err) => {
@@ -128,7 +105,6 @@ const AuthProvider = ({ children }: Props) => {
     login: handleLogin,
     logout: handleLogout,
   };
-  console.log(values);
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

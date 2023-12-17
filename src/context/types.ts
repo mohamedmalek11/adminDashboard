@@ -6,6 +6,7 @@ export type LoginParams = {
 };
 
 export type UserDataType = {
+  userData: object;
   id: string;
   roles: object;
   emailAddress: string;
