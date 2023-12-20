@@ -10,12 +10,15 @@ import type { AppProps } from "next/app";
 // ** Loader Import
 import NProgress from "nprogress";
 
+// ** Store Imports
+import { store } from 'src/store'
+import { Provider } from 'react-redux'
+
 // ** Emotion Imports
 import { CacheProvider } from "@emotion/react";
 import type { EmotionCache } from "@emotion/cache";
 
 // ** Config Imports
-
 
 import themeConfig from "src/configs/themeConfig";
 
@@ -117,43 +120,47 @@ const App = (props: ExtendedAppProps) => {
 
   const guestGuard = Component.guestGuard ?? false;
 
-
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <CacheProvider value={emotionCache}>
-        <Head>
-          <title>{`${themeConfig.templateName}`}</title>
-          <meta name="description" content={`${themeConfig.templateName}`} />
-          <meta name="keywords" content="aerBage-admin" />
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <title>{`${themeConfig.templateName}`}</title>
+            <meta name="description" content={`${themeConfig.templateName}`} />
+            <meta name="keywords" content="aerBage-admin" />
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
+          </Head>
 
-        <AuthProvider>
-          <SettingsProvider
-            {...(setConfig ? { pageSettings: setConfig() } : {})}
-          >
-            <SettingsConsumer>
-              {({ settings }) => {
-                return (
-                  <ThemeComponent settings={settings}>
-                    <Guard authGuard={authGuard} guestGuard={guestGuard}>
+          <AuthProvider>
+            <SettingsProvider
+              {...(setConfig ? { pageSettings: setConfig() } : {})}
+            >
+              <SettingsConsumer>
+                {({ settings }) => {
+                  return (
+                    <ThemeComponent settings={settings}>
+                      <Guard authGuard={authGuard} guestGuard={guestGuard}>
                         {getLayout(<Component {...pageProps} />)}
-                    </Guard>
-                    <ReactHotToast>
-                      <Toaster
-                        position={settings.toastPosition}
-                        toastOptions={{ className: "react-hot-toast" }}
-                      />
-                    </ReactHotToast>
-                  </ThemeComponent>
-                );
-              }}
-            </SettingsConsumer>
-          </SettingsProvider>
-        </AuthProvider>
-      </CacheProvider>
-    </QueryClientProvider>
+                      </Guard>
+                      <ReactHotToast>
+                        <Toaster
+                          position={settings.toastPosition}
+                          toastOptions={{ className: "react-hot-toast" }}
+                        />
+                      </ReactHotToast>
+                    </ThemeComponent>
+                  );
+                }}
+              </SettingsConsumer>
+            </SettingsProvider>
+          </AuthProvider>
+        </CacheProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 
