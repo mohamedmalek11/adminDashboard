@@ -1,5 +1,13 @@
-const Home = () => {
-  return <>Home Page</>
-}
+import router from "next/router";
+import { useEffect } from "react";
 
-export default Home
+const Home = () => {
+  useEffect(() => {
+    if (router.route === "/") {
+      router.replace("/home");
+    }
+  }, []);
+  return <>Home Page</>;
+};
+
+export default Home;
