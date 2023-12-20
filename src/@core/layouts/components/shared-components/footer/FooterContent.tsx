@@ -32,24 +32,9 @@ const FooterContent = () => {
         display: "flex",
         flexWrap: "wrap",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
       }}
     >
-      <Typography sx={{ mr: 2, display: "flex", color: "text.secondary" }}>
-        {`© ${new Date().getFullYear()}, Made with `}
-        <Box component="span" sx={{ mx: 1, color: "error.main" }}>
-          ❤️
-        </Box>
-        {`by`}
-        <Typography
-          sx={{ ml: 1 }}
-          target="_blank"
-          href="https://pixinvent.com"
-          component={StyledCompanyName}
-        >
-          Pixinvent
-        </Typography>
-      </Typography>
       {hidden ? null : (
         <Box
           sx={{
@@ -59,7 +44,7 @@ const FooterContent = () => {
             "& :not(:last-child)": { mr: 4 },
           }}
         >
-          <Typography target="_blank" component={LinkStyled} href="">
+          <Typography component={LinkStyled} href="">
             aerBag
           </Typography>
         </Box>
