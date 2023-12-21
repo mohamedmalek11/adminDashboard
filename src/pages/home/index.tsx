@@ -145,10 +145,6 @@ const RowOptions = ({ id }: { id: number | string }) => {
           <Icon icon='tabler:eye' fontSize={20} />
           View
         </MenuItem>
-        <MenuItem onClick={handleRowOptionsClose} sx={{ '& svg': { mr: 2 } }}>
-          <Icon icon='tabler:edit' fontSize={20} />
-          Edit
-        </MenuItem>
         <MenuItem onClick={handleDelete} sx={{ '& svg': { mr: 2 } }}>
           <Icon icon='tabler:trash' fontSize={20} />
           Delete
@@ -268,7 +264,7 @@ const columns: GridColDef[] = [
   }
 ]
 
-const Home = ({ apiData }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = () => {
   // ** State
   const [role, setRole] = useState<string>('')
   const [plan, setPlan] = useState<string>('')
@@ -313,21 +309,8 @@ const Home = ({ apiData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Grid container spacing={6.5}>
       <Grid item xs={12}>
-        {apiData && (
-          <Grid container spacing={6}>
-            {apiData.statsHorizontalWithDetails.map((item: CardStatsHorizontalWithDetailsProps, index: number) => {
-              return (
-                <Grid item xs={12} md={3} sm={6} key={index}>
-                  <CardStatsHorizontalWithDetails {...item} />
-                </Grid>
-              )
-            })}
-          </Grid>
-        )}
-      </Grid>
-      <Grid item xs={12}>
         <Card>
-          <CardHeader title='Search Filters' />
+          {/* <CardHeader title='Search Filters' />
           <CardContent>
             <Grid container spacing={6}>
               <Grid item sm={4} xs={12}>
@@ -385,7 +368,7 @@ const Home = ({ apiData }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </CustomTextField>
               </Grid>
             </Grid>
-          </CardContent>
+          </CardContent> */}
           <Divider sx={{ m: '0 !important' }} />
           <TableHeader value={value} handleFilter={handleFilter} toggle={toggleAddUserDrawer} />
           <DataGrid
@@ -404,17 +387,6 @@ const Home = ({ apiData }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <AddUserDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
     </Grid>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get('/cards/statistics')
-  const apiData: CardStatsType = res.data
-
-  return {
-    props: {
-      apiData
-    }
-  }
 }
 
 export default Home
