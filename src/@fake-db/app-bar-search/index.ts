@@ -84,35 +84,35 @@ const searchData: AppBarSearchType[] = [
   },
   {
     id: 12,
-    url: '/apps/user/view/account',
+    url: '/workshop/account',
     icon: 'tabler:user',
     title: 'User View - Account',
     category: 'appsPages'
   },
   {
     id: 13,
-    url: '/apps/user/view/security',
+    url: '/workshop/security',
     icon: 'tabler:lock',
     title: 'User View - Security',
     category: 'appsPages'
   },
   {
     id: 14,
-    url: '/apps/user/view/billing-plan',
+    url: '/workshop/billing-plan',
     icon: 'tabler:currency-dollar',
     title: 'User View - Billing & Plans',
     category: 'appsPages'
   },
   {
     id: 15,
-    url: '/apps/user/view/notification',
+    url: '/workshop/notification',
     icon: 'tabler:bell',
     title: 'User View - Notification',
     category: 'appsPages'
   },
   {
     id: 16,
-    url: '/apps/user/view/connection',
+    url: '/workshop/connection',
     icon: 'tabler:link',
     title: 'User View - Connection',
     category: 'appsPages'

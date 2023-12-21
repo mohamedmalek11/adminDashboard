@@ -78,23 +78,23 @@ const navigation: VerticalNavItemsType = [
         children: [
           {
             title: 'Account',
-            path: '/apps/user/view/account'
+            path: '/workshop/account'
           },
           {
             title: 'Security',
-            path: '/apps/user/view/security'
+            path: '/workshop/security'
           },
           {
             title: 'Billing & Plans',
-            path: '/apps/user/view/billing-plan'
+            path: '/workshop/billing-plan'
           },
           {
             title: 'Notifications',
-            path: '/apps/user/view/notification'
+            path: '/workshop/notification'
           },
           {
             title: 'Connection',
-            path: '/apps/user/view/connection'
+            path: '/workshop/connection'
           }
         ]
       }
