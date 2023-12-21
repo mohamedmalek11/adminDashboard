@@ -4,6 +4,9 @@ import { ReactNode } from 'react'
 // ** MUI Imports
 import { Theme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
 
 // ** Layout Imports
 // !Do not remove this Layout import
@@ -50,7 +53,16 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
   if (hidden && settings.layout === 'horizontal') {
     settings.layout = 'vertical'
   }
-
+  const AppBrand = () => {
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <img src='/images/favicon.png' alt='logo' width='30' height='30' />
+        <Typography variant='h6' sx={{ ml: 2 }}>
+          AerBag
+        </Typography>
+      </Box>
+    )
+  }
   return (
     <Layout
       hidden={hidden}
@@ -59,6 +71,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
       contentHeightFixed={contentHeightFixed}
       verticalLayoutProps={{
         navMenu: {
+          branding: () => <AppBrand />,
           navItems: VerticalNavItems()
 
           // Uncomment the below line when using server-side menu in vertical layout and comment the above line
