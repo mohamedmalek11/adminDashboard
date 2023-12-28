@@ -9,9 +9,14 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'tabler:smart-home',
     },
     {
-      title: 'Second Page',
-      path: '/second-page',
-      icon: 'tabler:mail',
+      title: 'Customers',
+      path: '/customers',
+      icon: 'tabler:users',
+    },
+    {
+      title: 'Tickets',
+      path: '/tickets',
+      icon: 'tabler:id',
     }
   ]
 }

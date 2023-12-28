@@ -10,12 +10,10 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Menu from "@mui/material/Menu";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { SelectChangeEvent } from "@mui/material/Select";
 
 // ** Icon Imports
 import Icon from "src/@core/components/icon";
@@ -24,7 +22,6 @@ import Icon from "src/@core/components/icon";
 import { useDispatch, useSelector } from "react-redux";
 
 // ** Custom Components Imports
-import CustomChip from "src/@core/components/mui/chip";
 import CustomAvatar from "src/@core/components/mui/avatar";
 
 // ** Utils Import
@@ -33,8 +30,6 @@ import { getInitials } from "src/@core/utils/get-initials";
 // ** Actions Imports
 import { fetchData, deleteUser } from "src/store/apps/user";
 
-// ** Third Party Components
-import axios from "axios";
 
 // ** Types Imports
 import { RootState, AppDispatch } from "src/store";
@@ -261,7 +256,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const Home = () => {
+const Tickets = () => {
   // ** State
   const [value, setValue] = useState<string>("");
   const [data, setData] = useState<any>();
@@ -327,4 +322,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Tickets;

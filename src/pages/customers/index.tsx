@@ -271,9 +271,7 @@ const Home = () => {
     pageSize: 10,
   });
 
-  // ** Hooks
-  const dispatch = useDispatch<AppDispatch>();
-  const store = useSelector((state: RootState) => state.user);
+
 
   useEffect(() => {
     const fetchTenantsData = async () => {
