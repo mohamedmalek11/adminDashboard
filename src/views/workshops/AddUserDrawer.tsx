@@ -155,7 +155,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
       <Header>
-        <Typography variant='h5'>Add User</Typography>
+        <Typography variant='h5'>Add Tenant</Typography>
         <IconButton
           size='small'
           onClick={handleClose}
@@ -183,7 +183,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
                 fullWidth
                 value={value}
                 sx={{ mb: 4 }}
-                label='Full Name'
+                label='Arabic Name'
                 onChange={onChange}
                 placeholder='John Doe'
                 error={Boolean(errors.fullName)}
@@ -200,7 +200,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
                 fullWidth
                 value={value}
                 sx={{ mb: 4 }}
-                label='Username'
+                label='English Name'
                 onChange={onChange}
                 placeholder='johndoe'
                 error={Boolean(errors.username)}
@@ -216,12 +216,12 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
               <CustomTextField
                 fullWidth
                 type='email'
-                label='Email'
+                label='Street'
                 value={value}
                 sx={{ mb: 4 }}
                 onChange={onChange}
                 error={Boolean(errors.email)}
-                placeholder='johndoe@email.com'
+                placeholder='123123123'
                 {...(errors.email && { helperText: errors.email.message })}
               />
             )}
@@ -235,7 +235,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
                 fullWidth
                 value={value}
                 sx={{ mb: 4 }}
-                label='Company'
+                label='additionalNumber'
                 onChange={onChange}
                 placeholder='Company PVT LTD'
                 error={Boolean(errors.company)}
@@ -270,66 +270,14 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
                 type='number'
                 value={value}
                 sx={{ mb: 4 }}
-                label='Contact'
+                label='taxNumber'
                 onChange={onChange}
-                placeholder='(397) 294-5153'
+                placeholder='21324234234'
                 error={Boolean(errors.contact)}
                 {...(errors.contact && { helperText: errors.contact.message })}
               />
             )}
           />
-          <Controller
-            name='billing'
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { value, onChange } }) => (
-              <CustomTextField
-                select
-                fullWidth
-                sx={{ mb: 4 }}
-                label='Billing'
-                id='validation-billing-select'
-                error={Boolean(errors.billing)}
-                aria-describedby='validation-billing-select'
-                {...(errors.billing && { helperText: errors.billing.message })}
-                SelectProps={{ value: value, onChange: e => onChange(e) }}
-              >
-                <MenuItem value=''>Billing</MenuItem>
-                <MenuItem value='Auto Debit'>Auto Debit</MenuItem>
-                <MenuItem value='Manual - Cash'>Manual - Cash</MenuItem>
-                <MenuItem value='Manual - Paypal'>Manual - Paypal</MenuItem>
-                <MenuItem value='Manual - Credit Card'>Manual - Credit Card</MenuItem>
-              </CustomTextField>
-            )}
-          />
-          <CustomTextField
-            select
-            fullWidth
-            value={role}
-            sx={{ mb: 4 }}
-            label='Select Role'
-            onChange={e => setRole(e.target.value)}
-            SelectProps={{ value: role, onChange: e => setRole(e.target.value as string) }}
-          >
-            <MenuItem value='admin'>Admin</MenuItem>
-            <MenuItem value='author'>Author</MenuItem>
-            <MenuItem value='editor'>Editor</MenuItem>
-            <MenuItem value='maintainer'>Maintainer</MenuItem>
-            <MenuItem value='subscriber'>Subscriber</MenuItem>
-          </CustomTextField>
-
-          <CustomTextField
-            select
-            fullWidth
-            sx={{ mb: 6 }}
-            label='Select Plan'
-            SelectProps={{ value: plan, onChange: e => setPlan(e.target.value as string) }}
-          >
-            <MenuItem value='basic'>Basic</MenuItem>
-            <MenuItem value='company'>Company</MenuItem>
-            <MenuItem value='enterprise'>Enterprise</MenuItem>
-            <MenuItem value='team'>Team</MenuItem>
-          </CustomTextField>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Button type='submit' variant='contained' sx={{ mr: 3 }}>
               Submit
