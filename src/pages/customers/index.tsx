@@ -10,7 +10,6 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Menu from "@mui/material/Menu";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -24,7 +23,6 @@ import Icon from "src/@core/components/icon";
 import { useDispatch, useSelector } from "react-redux";
 
 // ** Custom Components Imports
-import CustomChip from "src/@core/components/mui/chip";
 import CustomAvatar from "src/@core/components/mui/avatar";
 
 // ** Utils Import
