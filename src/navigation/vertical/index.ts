@@ -6,11 +6,16 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Tenants',
       path: '/tenants',
-      icon: 'tabler:smart-home',
+      icon: 'tabler:users',
     },
     {
       title: 'Customers',
       path: '/customers',
+      icon: 'tabler:users',
+    },
+    {
+      title: 'Employees',
+      path: '/employees',
       icon: 'tabler:users',
     },
     {
