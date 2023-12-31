@@ -36,8 +36,8 @@ import { ThemeColor } from "src/@core/layouts/types";
 import { EmployeesType } from "src/types/apps/employeesTypes";
 
 // ** Custom Table Components Imports
-import TableHeader from "src/views/customer/TableHeader";
-import AddCustomerDrawer from "src/views/customer/AddCustomerDrawer";
+import TableHeader from "src/views/employees/TableHeader";
+import AddEmployeeDrawer from "src/views/employees/AddEmployeeDrawer";
 
 // ** Api Imports
 import { getEmployees } from "../../api/employees";
@@ -283,7 +283,7 @@ const Home = () => {
         </Card>
       </Grid>
 
-      <AddCustomerDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
+      <AddEmployeeDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
     </Grid>
   );
 };

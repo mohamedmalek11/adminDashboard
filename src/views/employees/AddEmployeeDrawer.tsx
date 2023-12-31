@@ -93,7 +93,7 @@ const defaultValues = {
   contact: Number('')
 }
 
-const AddCustomerDrawer = (props: SidebarAddUserType) => {
+const SidebarAddEmployee = (props: SidebarAddUserType) => {
   // ** Props
   const { open, toggle } = props
 
@@ -155,7 +155,7 @@ const AddCustomerDrawer = (props: SidebarAddUserType) => {
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
       <Header>
-        <Typography variant='h5'>Add Customer</Typography>
+        <Typography variant='h5'>Add Employee</Typography>
         <IconButton
           size='small'
           onClick={handleClose}
@@ -292,4 +292,4 @@ const AddCustomerDrawer = (props: SidebarAddUserType) => {
   )
 }
 
-export default AddCustomerDrawer
+export default SidebarAddEmployee
