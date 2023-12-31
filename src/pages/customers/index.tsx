@@ -3,7 +3,6 @@ import { useState, useEffect, MouseEvent, useCallback } from "react";
 
 // ** Next Imports
 import Link from "next/link";
-import { GetStaticProps, InferGetStaticPropsType } from "next/types";
 
 // ** MUI Imports
 import Box from "@mui/material/Box";
@@ -14,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { SelectChangeEvent } from "@mui/material/Select";
 
 // ** Icon Imports
 import Icon from "src/@core/components/icon";
@@ -29,22 +27,20 @@ import CustomAvatar from "src/@core/components/mui/avatar";
 import { getInitials } from "src/@core/utils/get-initials";
 
 // ** Actions Imports
-import { fetchData, deleteUser } from "src/store/apps/user";
+import { deleteUser } from "src/store/apps/user";
 
-// ** Third Party Components
-import axios from "axios";
 
 // ** Types Imports
-import { RootState, AppDispatch } from "src/store";
+import { AppDispatch } from "src/store";
 import { ThemeColor } from "src/@core/layouts/types";
-import { TenantType } from "src/types/apps/userTypes";
+import { customerType } from "src/types/apps/userTypes";
 
 // ** Custom Table Components Imports
-import TableHeader from "src/views/workshops/TableHeader";
-import AddUserDrawer from "src/views/workshops/AddUserDrawer";
+import TableHeader from "src/views/customer/TableHeader";
+import AddCustomerDrawer from "src/views/customer/AddCustomerDrawer";
 
 // ** Api Imports
-import { getTenants } from "../../api/tenants";
+import { getCustomers } from "../../api/customers";
 interface UserRoleType {
   [key: string]: { icon: string; color: string };
 }
@@ -54,7 +50,7 @@ interface UserStatusType {
 }
 
 interface CellType {
-  row: TenantType;
+  row: customerType;
 }
 
 // ** renders client column
@@ -73,15 +69,8 @@ const userStatusObj: UserStatusType = {
 };
 
 // ** renders client column
-const renderClient = (row: TenantType) => {
-  if (row.imagePath) {
-    return (
-      <CustomAvatar
-        src={row.imagePath}
-        sx={{ mr: 2.5, width: 38, height: 38 }}
-      />
-    );
-  } else {
+const renderClient = (row: customerType) => {
+
     return (
       <CustomAvatar
         skin="light"
@@ -94,11 +83,11 @@ const renderClient = (row: TenantType) => {
           fontSize: (theme) => theme.typography.body1.fontSize,
         }}
       >
-        {getInitials(row.name.en ? row.name.en : "John Doe")}
+        {getInitials(row.name || "John Doe")}
       </CustomAvatar>
     );
   }
-};
+
 
 const RowOptions = ({ id }: { id: number | string }) => {
   // ** Hooks
@@ -164,7 +153,7 @@ const columns: GridColDef[] = [
     flex: 0.25,
     minWidth: 280,
     field: "fullName",
-    headerName: "Tenant Name",
+    headerName: "Name",
     renderCell: ({ row }: CellType) => {
       const { name, city } = row;
 
@@ -180,8 +169,6 @@ const columns: GridColDef[] = [
           >
             <Typography
               noWrap
-              component={Link}
-              href="/apps/user/view/account"
               sx={{
                 fontWeight: 500,
                 textDecoration: "none",
@@ -189,7 +176,7 @@ const columns: GridColDef[] = [
                 "&:hover": { color: "primary.main" },
               }}
             >
-              {name.en}
+              {name}
             </Typography>
             <Typography noWrap variant="body2" sx={{ color: "text.disabled" }}>
               {city}
@@ -220,11 +207,11 @@ const columns: GridColDef[] = [
     flex: 0.15,
     minWidth: 190,
     field: "street",
-    headerName: "street",
+    headerName: "Email",
     renderCell: ({ row }: CellType) => {
       return (
         <Typography noWrap sx={{ color: "text.secondary" }}>
-          {row.street}
+          {row.emailAddress}
         </Typography>
       );
     },
@@ -233,7 +220,7 @@ const columns: GridColDef[] = [
     flex: 0.15,
     minWidth: 120,
     headerName: "Commercial Number",
-    field: "Commercial Number",
+    field: "Mobile",
     renderCell: ({ row }: CellType) => {
       return (
         <Typography
@@ -244,7 +231,7 @@ const columns: GridColDef[] = [
             textTransform: "capitalize",
           }}
         >
-          {row.commercialNumber}
+          {row.mobileNumber}
         </Typography>
       );
     },
@@ -272,16 +259,15 @@ const Home = () => {
 
 
   useEffect(() => {
-    const fetchTenantsData = async () => {
+    const fetchData = async () => {
       try {
-        const result = await getTenants();
+        const result = await getCustomers();
         setData(result);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    fetchTenantsData();
+    fetchData();
   }, [value]);
   console.log(data);
   const handleFilter = useCallback((val: string) => {
@@ -318,7 +304,7 @@ const Home = () => {
         </Card>
       </Grid>
 
-      <AddUserDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
+      <AddCustomerDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
     </Grid>
   );
 };

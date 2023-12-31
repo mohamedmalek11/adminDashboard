@@ -39,12 +39,12 @@ const TableHeader = (props: TableHeaderProps) => {
           alignItems: "center",
         }}
       >
-        <CustomTextField
+        {/* <CustomTextField
           value={value}
           sx={{ mr: 4 }}
           placeholder="Search"
           onChange={(e) => handleFilter(e.target.value)}
-        />
+        /> */}
 
         <Button
           onClick={toggle}
@@ -52,7 +52,7 @@ const TableHeader = (props: TableHeaderProps) => {
           sx={{ "& svg": { mr: 2 } }}
         >
           <Icon fontSize="1.125rem" icon="tabler:plus" />
-          Add New Tenant
+          Add New customer
         </Button>
       </Box>
     </Box>

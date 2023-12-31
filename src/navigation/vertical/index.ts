@@ -4,8 +4,8 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): VerticalNavItemsType => {
   return [
     {
-      title: 'Home',
-      path: '/home',
+      title: 'Tenants',
+      path: '/tenants',
       icon: 'tabler:smart-home',
     },
     {

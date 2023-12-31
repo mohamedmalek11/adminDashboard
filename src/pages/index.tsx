@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Home = () => {
   useEffect(() => {
     if (router.route === "/") {
-      router.replace("/home");
+      router.replace("/tenants");
     }
   }, []);
   return <>Home Page</>;

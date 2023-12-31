@@ -34,6 +34,26 @@ export type TenantType = {
   taxNumber: string;
   zipCode: string;
 };
+export type customerType = {
+  id: string;
+  name: string;
+  createdAt: string;
+  deletedAt: string;
+  city: string;
+  country: string;
+  street: string;
+  district: string;
+  zipCode: string;
+  emailAddress: string;
+  mobileNumber: string;
+  taxNumber: string;
+  crNumber: string;
+  additionalNumber: string;
+  buildingNumber: string;
+  workflows: object;
+  note: string;
+  isReseller: boolean;
+};
 
 export type ProjectListDataType = {
   id: number;

@@ -15,7 +15,6 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { SelectChangeEvent } from "@mui/material/Select";
 
 // ** Icon Imports
 import Icon from "src/@core/components/icon";
@@ -24,7 +23,6 @@ import Icon from "src/@core/components/icon";
 import { useDispatch, useSelector } from "react-redux";
 
 // ** Custom Components Imports
-import CustomChip from "src/@core/components/mui/chip";
 import CustomAvatar from "src/@core/components/mui/avatar";
 
 // ** Utils Import
@@ -42,8 +40,8 @@ import { ThemeColor } from "src/@core/layouts/types";
 import { TenantType } from "src/types/apps/userTypes";
 
 // ** Custom Table Components Imports
-import TableHeader from "src/views/workshops/TableHeader";
-import AddUserDrawer from "src/views/workshops/AddUserDrawer";
+import TableHeader from "src/views/tenants/TableHeader";
+import AddUserDrawer from "src/views/tenants/AddUserDrawer";
 
 // ** Api Imports
 import { getTenants } from "../../api/tenants";
