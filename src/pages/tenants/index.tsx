@@ -144,7 +144,7 @@ const RowOptions = ({ id }: { id: number | string }) => {
         <MenuItem
           component={Link}
           sx={{ "& svg": { mr: 2 } }}
-          href="/home/workshop/account"
+          href="tenants/workshop/account"
           onClick={handleRowOptionsClose}
         >
           <Icon icon="tabler:eye" fontSize={20} />
@@ -181,7 +181,7 @@ const columns: GridColDef[] = [
             <Typography
               noWrap
               component={Link}
-              href="/apps/user/view/account"
+              href="tenants/workshop/account"
               sx={{
                 fontWeight: 500,
                 textDecoration: "none",
