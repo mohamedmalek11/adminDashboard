@@ -19,6 +19,11 @@ const navigation = (): VerticalNavItemsType => {
       icon: 'tabler:users',
     },
     {
+      title: 'Branches',
+      path: '/branches',
+      icon: 'tabler:users',
+    },
+    {
       title: 'Tickets',
       path: '/tickets',
       icon: 'tabler:id',
