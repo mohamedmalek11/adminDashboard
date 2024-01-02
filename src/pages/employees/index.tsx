@@ -41,6 +41,7 @@ import AddEmployeeDrawer from "src/views/employees/AddEmployeeDrawer";
 
 // ** Api Imports
 import { getEmployees } from "../../api/employees";
+import FallbackSpinner from "src/@core/components/spinner";
 
 interface UserRoleType {
   [key: string]: { icon: string; color: string };
@@ -278,7 +279,7 @@ const Home = () => {
               onPaginationModelChange={setPaginationModel}
             />
           ) : (
-            "loading..."
+            <FallbackSpinner />
           )}
         </Card>
       </Grid>

@@ -45,6 +45,7 @@ import AddUserDrawer from "src/views/tenants/AddUserDrawer";
 
 // ** Api Imports
 import { getTenants } from "../../api/tenants";
+import FallbackSpinner from "src/@core/components/spinner";
 interface UserRoleType {
   [key: string]: { icon: string; color: string };
 }
@@ -315,7 +316,7 @@ const Home = () => {
               onPaginationModelChange={setPaginationModel}
             />
           ) : (
-            "loading..."
+          <FallbackSpinner />
           )}
         </Card>
       </Grid>

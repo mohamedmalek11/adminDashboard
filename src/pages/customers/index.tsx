@@ -41,6 +41,7 @@ import AddCustomerDrawer from "src/views/customer/AddCustomerDrawer";
 
 // ** Api Imports
 import { getCustomers } from "../../api/customers";
+import FallbackSpinner from "src/@core/components/spinner";
 interface UserRoleType {
   [key: string]: { icon: string; color: string };
 }
@@ -299,7 +300,7 @@ const Home = () => {
               onPaginationModelChange={setPaginationModel}
             />
           ) : (
-            "loading..."
+            <FallbackSpinner />
           )}
         </Card>
       </Grid>

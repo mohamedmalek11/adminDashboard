@@ -1,5 +1,6 @@
 import router from "next/router";
 import { useEffect } from "react";
+import FallbackSpinner from "src/@core/components/spinner";
 
 const Home = () => {
   useEffect(() => {
@@ -7,7 +8,7 @@ const Home = () => {
       router.replace("/tenants");
     }
   }, []);
-  return <>Home Page</>;
+  return <FallbackSpinner />;
 };
 
 export default Home;
