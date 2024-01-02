@@ -53,6 +53,8 @@ const AuthProvider = ({ children }: Props) => {
       if (storedToken) {
         setUser(userData);
         setLoading(false);
+      } else {
+        setLoading(false);
       }
     };
 
