@@ -24,7 +24,6 @@ import Icon from "src/@core/components/icon";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation, useQueryClient } from "react-query";
 
 // ** Hooks
 import { useAuth } from "src/hooks/useAuth";
@@ -254,9 +253,9 @@ const LoginPage = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <Typography component={LinkStyled} href="/forgot-password">
+                {/* <Typography component={LinkStyled} href="/forgot-password">
                   Forgot Password?
-                </Typography>
+                </Typography> */}
               </Box>
               <Button
                 fullWidth
