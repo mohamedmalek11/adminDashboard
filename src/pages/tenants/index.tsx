@@ -10,7 +10,6 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Menu from "@mui/material/Menu";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -145,7 +144,8 @@ const RowOptions = ({ id }: { id: number | string }) => {
         <MenuItem
           component={Link}
           sx={{ "& svg": { mr: 2 } }}
-          href="tenants/workshop/account"
+          href="tenants/workshop/workshop-branches"
+          id={id}
           onClick={handleRowOptionsClose}
         >
           <Icon icon="tabler:eye" fontSize={20} />
@@ -291,14 +291,12 @@ const Home = () => {
     setValue(val);
   }, []);
 
-
   const toggleAddUserDrawer = () => setAddUserOpen(!addUserOpen);
 
   return (
     <Grid container spacing={6.5}>
       <Grid item xs={12}>
         <Card>
-      
           <TableHeader
             value={value}
             handleFilter={handleFilter}
@@ -316,7 +314,7 @@ const Home = () => {
               onPaginationModelChange={setPaginationModel}
             />
           ) : (
-          <FallbackSpinner />
+            <FallbackSpinner />
           )}
         </Card>
       </Grid>
