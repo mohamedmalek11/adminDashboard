@@ -8,9 +8,11 @@ import UserViewRight from 'src/views/workshop/UserViewRight'
 
 type Props = {
   tab: string
+  id: string
 }
 
-const UserView = ({ tab }: Props) => {
+const UserView = ({ tab, id }: Props) => {
+  console.log(id)
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={5} lg={4}>

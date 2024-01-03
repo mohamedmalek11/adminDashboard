@@ -19,7 +19,7 @@ import Icon from "src/@core/components/icon";
 
 // ** Demo Components Imports
 import UserViewBilling from "src/views/workshop/UserViewBilling";
-import UserViewAccount from "src/views/workshop/UserViewAccount";
+import UserViewAccount from "src/views/workshop/UserViewBranches";
 import UserViewSecurity from "src/views/workshop/UserViewSecurity";
 import UserViewConnection from "src/views/workshop/UserViewConnection";
 import UserViewNotification from "src/views/workshop/UserViewNotification";
@@ -101,8 +101,8 @@ const UserViewRight = ({ tab }: Props) => {
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
         <Tab
-          value="account"
-          label="Account"
+          value="workshop-branches"
+          label="branches"
           icon={<Icon fontSize="1.125rem" icon="tabler:user-check" />}
         />
         <Tab
@@ -141,7 +141,7 @@ const UserViewRight = ({ tab }: Props) => {
           </Box>
         ) : (
           <>
-            <TabPanel sx={{ p: 0 }} value="account">
+            <TabPanel sx={{ p: 0 }} value="workshop-branches">
               <UserViewAccount />
             </TabPanel>
             <TabPanel sx={{ p: 0 }} value="security">
