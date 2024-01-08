@@ -88,7 +88,7 @@ const Sub = styled('sub')(({ theme }) => ({
   fontSize: theme.typography.body1.fontSize
 }))
 
-const UserViewLeft = () => {
+const WorkshopViewLeft = () => {
   // ** States
   const [openEdit, setOpenEdit] = useState<boolean>(false)
   const [openPlans, setOpenPlans] = useState<boolean>(false)
@@ -484,4 +484,4 @@ const UserViewLeft = () => {
   }
 }
 
-export default UserViewLeft
+export default WorkshopViewLeft

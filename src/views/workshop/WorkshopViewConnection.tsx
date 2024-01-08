@@ -91,7 +91,7 @@ const socialAccountsArr: SocialAccountsType[] = [
   }
 ]
 
-const UserViewConnection = () => {
+const WorkshopViewConnection = () => {
   return (
     <Grid container spacing={6}>
       {/* Connected Accounts Cards */}
@@ -193,4 +193,4 @@ const UserViewConnection = () => {
   )
 }
 
-export default UserViewConnection
+export default WorkshopViewConnection

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 // ** Demo Component Imports
 import UsersProjectListTable from 'src/views/workshop/UsersProjectListTable'
 
-const UserViewAccount = () => {
+const WorkshopViewBranches = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -14,4 +14,4 @@ const UserViewAccount = () => {
   )
 }
 
-export default UserViewAccount
+export default WorkshopViewBranches

@@ -109,7 +109,7 @@ const data: DataType[] = [
   }
 ]
 
-const UserViewBilling = () => {
+const WorkshopViewBilling = () => {
   // ** States
   const [cvc, setCvc] = useState<string>('')
   const [name, setName] = useState<string>('')
@@ -751,4 +751,4 @@ const UserViewBilling = () => {
   )
 }
 
-export default UserViewBilling
+export default WorkshopViewBilling

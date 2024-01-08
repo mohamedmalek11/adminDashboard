@@ -45,6 +45,7 @@ import AddUserDrawer from "src/views/tenants/AddUserDrawer";
 // ** Api Imports
 import { getTenants } from "../../api/tenants";
 import FallbackSpinner from "src/@core/components/spinner";
+import WorkshopView from "src/views/workshop/WorkshopViewPage";
 interface UserRoleType {
   [key: string]: { icon: string; color: string };
 }
@@ -100,7 +101,7 @@ const renderClient = (row: TenantType) => {
   }
 };
 
-const RowOptions = ({ id }: { id: number | string }) => {
+const RowOptions = ({ id }: { id: string }) => {
   // ** Hooks
   const dispatch = useDispatch<AppDispatch>();
 
@@ -144,8 +145,7 @@ const RowOptions = ({ id }: { id: number | string }) => {
         <MenuItem
           component={Link}
           sx={{ "& svg": { mr: 2 } }}
-          href="tenants/workshop/workshop-branches"
-          id={id}
+          href={`tenants/workshop/workshop-branches`}
           onClick={handleRowOptionsClose}
         >
           <Icon icon="tabler:eye" fontSize={20} />
@@ -286,7 +286,6 @@ const Home = () => {
 
     fetchTenantsData();
   }, [value]);
-  console.log(data);
   const handleFilter = useCallback((val: string) => {
     setValue(val);
   }, []);

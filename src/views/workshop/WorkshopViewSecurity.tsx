@@ -100,7 +100,7 @@ const data: DataType[] = [
   }
 ]
 
-const UserViewSecurity = () => {
+const WorkshopViewSecurity = () => {
   // ** States
   const [defaultValues, setDefaultValues] = useState<any>({ mobile: '+1(968) 819-2547' })
   const [mobileNumber, setMobileNumber] = useState<string>(defaultValues.mobile)
@@ -386,4 +386,4 @@ const UserViewSecurity = () => {
   )
 }
 
-export default UserViewSecurity
+export default WorkshopViewSecurity

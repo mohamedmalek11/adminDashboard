@@ -7,10 +7,10 @@ import axios from 'axios'
 
 
 // ** Demo Components Imports
-import UserViewPage from 'src/views/workshop/UserViewPage'
+import WorkshopViewPage from 'src/views/workshop/WorkshopViewPage'
 
-const UserView = ({ tab }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <UserViewPage tab={tab} />
+const WorkshopView = ({ tab }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return <WorkshopViewPage tab={tab} />
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -36,4 +36,4 @@ export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsC
   }
 }
 
-export default UserView
+export default WorkshopView

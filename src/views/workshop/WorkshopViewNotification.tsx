@@ -13,7 +13,7 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import TableContainer from '@mui/material/TableContainer'
 
-const UserViewNotification = () => {
+const WorkshopViewNotification = () => {
   return (
     <Card>
       <CardHeader title='Notifications' sx={{ pb: 1.5 }} />
@@ -103,4 +103,4 @@ const UserViewNotification = () => {
   )
 }
 
-export default UserViewNotification
+export default WorkshopViewNotification

@@ -18,11 +18,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Icon from "src/@core/components/icon";
 
 // ** Demo Components Imports
-import UserViewBilling from "src/views/workshop/UserViewBilling";
-import UserViewAccount from "src/views/workshop/UserViewBranches";
-import UserViewSecurity from "src/views/workshop/UserViewSecurity";
-import UserViewConnection from "src/views/workshop/UserViewConnection";
-import UserViewNotification from "src/views/workshop/UserViewNotification";
+
+import WorkshopViewBranches from "src/views/workshop/WorkshopViewBranches";
 
 interface Props {
   tab: string;
@@ -61,7 +58,7 @@ const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
   },
 }));
 
-const UserViewRight = ({ tab }: Props) => {
+const WorkshopViewRight = ({ tab }: Props) => {
   // ** State
   const [activeTab, setActiveTab] = useState<string>(tab);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -105,26 +102,6 @@ const UserViewRight = ({ tab }: Props) => {
           label="branches"
           icon={<Icon fontSize="1.125rem" icon="tabler:user-check" />}
         />
-        <Tab
-          value="security"
-          label="Security"
-          icon={<Icon fontSize="1.125rem" icon="tabler:lock" />}
-        />
-        <Tab
-          value="billing-plan"
-          label="Billing & Plan"
-          icon={<Icon fontSize="1.125rem" icon="tabler:currency-dollar" />}
-        />
-        <Tab
-          value="notification"
-          label="Notification"
-          icon={<Icon fontSize="1.125rem" icon="tabler:bell" />}
-        />
-        <Tab
-          value="connection"
-          label="Connection"
-          icon={<Icon fontSize="1.125rem" icon="tabler:link" />}
-        />
       </TabList>
       <Box sx={{ mt: 4 }}>
         {isLoading ? (
@@ -142,19 +119,7 @@ const UserViewRight = ({ tab }: Props) => {
         ) : (
           <>
             <TabPanel sx={{ p: 0 }} value="workshop-branches">
-              <UserViewAccount />
-            </TabPanel>
-            <TabPanel sx={{ p: 0 }} value="security">
-              <UserViewSecurity />
-            </TabPanel>
-            <TabPanel sx={{ p: 0 }} value="billing-plan">
-              <UserViewBilling />
-            </TabPanel>
-            <TabPanel sx={{ p: 0 }} value="notification">
-              <UserViewNotification />
-            </TabPanel>
-            <TabPanel sx={{ p: 0 }} value="connection">
-              <UserViewConnection />
+              <WorkshopViewBranches />
             </TabPanel>
           </>
         )}
@@ -163,4 +128,4 @@ const UserViewRight = ({ tab }: Props) => {
   );
 };
 
-export default UserViewRight;
+export default WorkshopViewRight;
